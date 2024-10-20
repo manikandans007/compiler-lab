@@ -28,3 +28,9 @@ return RELOP;}
 \n LineNo++;
 . return yytext[0];
 %%
+/*
+lex pgm.l
+yacc -d pgm.y
+gcc lex.yy.c y.tab.c -ll -lm -w 
+./a.out 4.c
+*/
