@@ -16,3 +16,15 @@ for             return FOR;
 .                return yytext[0];
 
 %%
+/*
+   lex for.l
+yacc for.y
+gcc y.tab.c -ll -ly -w
+./a.out
+for(i=0;i<n;i++)
+i=i+1;
+accepted
+for(i=0;i<n;i++)
+i=i+1
+syntax error 
+*/
