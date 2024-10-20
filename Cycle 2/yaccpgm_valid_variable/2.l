@@ -23,3 +23,9 @@ int yywrap()
 return 1;
 
 }
+/*
+   yacc -d pgm2.y
+lex pgm2.l
+gcc lex.yy.c y.tab.c -w
+./a.out
+*/
