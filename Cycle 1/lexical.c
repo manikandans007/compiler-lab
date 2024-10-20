@@ -149,5 +149,8 @@ int main() {
 
     return 0;
 }
+/*
+  input: int a=s+b*3.14
+*/
 
 
