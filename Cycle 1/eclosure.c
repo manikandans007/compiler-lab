@@ -112,3 +112,26 @@ void print_e_closure(int i)
         printf("q%d,",e_closure[i][j]);
         printf("}");
 }
+
+
+/*
+   input 
+   enter the number of alphabets:3
+   entet the alphabets
+   a
+   b
+   e
+   enter number of states:3
+   enter number of transition:4
+   enter the tansition
+   state alphabet state2
+   1 e 2
+   2 a 3 
+   3 e 1
+   2 b 1
+   eclosure(q1)=1,2
+    eclosure(q2)=2
+	 eclosure(q3)=1,2.3   
+*/
+
+
