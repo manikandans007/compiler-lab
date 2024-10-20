@@ -15,6 +15,14 @@ void recognize_string(const char *input_string) {
     }
 }
 
+
+/*
+  lex pgm1.l
+gcc lex.yy.c 
+./a.out
+*/
+
+
 %}
 
 %%
