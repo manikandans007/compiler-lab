@@ -28,4 +28,6 @@ return 1;
 lex pgm2.l
 gcc lex.yy.c y.tab.c -w
 ./a.out
+valid identifier:abc
+invalid identifier:_456
 */
