@@ -35,3 +35,12 @@ int yywrap()
 return 1;
 
 }
+/*
+   yacc -d pgm3.y
+lex pgm3.l
+gcc lex.yy.c y.tab.c -w
+./a.out
+3+3 valid
+a+b in valid
+
+*/
