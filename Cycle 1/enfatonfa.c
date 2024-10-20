@@ -181,3 +181,21 @@ void print_e_closure(int i) {
     }
     printf("}\t");
 }
+/*
+   no of alphbets:3
+   a b e
+   no of states:4
+   start state :1
+   no:of final state:1
+   final state :4
+   no of transition :6
+   enter the transition 
+   1 a 2
+   1 e 2
+   2 b 4
+   3 a 2
+   3 b 4
+   4 e 1
+   
+*/
+
