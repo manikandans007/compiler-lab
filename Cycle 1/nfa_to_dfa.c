@@ -233,3 +233,19 @@ void printnewstate(struct node1 state)
   printf("}\t");
 
 }
+/*
+   enter no of alphbets:2
+   a b
+   enter no of states:3
+   enter start state:1
+   enter no of final state :1
+   enter final state:3
+   enter number of transition :5
+   transitiions
+   1 a 2
+   1 b 1
+   2a 3
+   2 b 2
+   3 b 3
+*/
+
