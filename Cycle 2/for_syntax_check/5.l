@@ -1,21 +1,40 @@
-alpha [A-Za-z]
-digit [0-9]
+%{
+
+#include<stdio.h>
+
+#include "y.tab.h"
+
+extern int yylval;
+
+%}
+
+
 
 %%
 
-[\t \n]
-for             return FOR;
-{digit}+    return NUM;
-{alpha}({alpha}|{digit})* return ID;
-"<="         return LE;
-">="         return GE;
-"=="         return EQ;
-"!="          return NE;
-"||"            return OR;
-"&&"         return AND;
-.                return yytext[0];
+[0-9]+ {
+
+          yylval=atoi(yytext);
+
+          return NUMBER;
+
+       }
+
+[\t] ;
+
+[\n] return 0;
+
+. return yytext[0];
 
 %%
+
+int yywrap()
+
+{
+
+return 1;
+
+}
 /*
    lex for.l
 yacc for.y
