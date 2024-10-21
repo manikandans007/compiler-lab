@@ -4,7 +4,7 @@
 
     int flag=0;
 
-   
+
 
 %}
 
@@ -60,7 +60,7 @@ void main()
 
    printf("\nEntered arithmetic expression is Valid\n\n");
 
- 
+
 
 }
 
@@ -73,4 +73,3 @@ void yyerror()
    flag=1;
 
 }
-
