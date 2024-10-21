@@ -1,65 +1,75 @@
-%{
-#include <stdio.h>
-#include <stdlib.h>
+   %{
+
+    #include<stdio.h>
+
+    int flag=0;
+
+   
+
 %}
-%token ID NUM FOR LE GE EQ NE OR AND
-%right '='
-%left OR AND
-%left '>' '<' LE GE EQ NE
+
+%token NUMBER
+
+
+
 %left '+' '-'
-%left '*' '/'
-%right UMINUS
-%left '!'
+
+%left '*' '/' '%'
+
+%left '(' ')'
 
 %%
-   
-S         : ST {printf("Input accepted\n"); exit(0);}
-ST       : FOR '(' E ';' E2 ';' E ')' DEF
-           ;
-DEF    : '{' BODY '}'
-           | E';'
-           | ST
-           |
-           ;
-BODY  : BODY BODY
-           | E ';'       
-           | ST
-           |            
-           ;
-       
-E        : ID '=' E
-          | E '+' E
-          | E '-' E
-          | E '*' E
-          | E '/' E
-          | E '<' E
-          | E '>' E
-          | E LE E
-          | E GE E
-          | E EQ E
-          | E NE E
-          | E OR E
-          | E AND E
-          | E '+' '+'
-          | E '-' '-'
-          | ID 
-          | NUM
-          ;
 
-   
-E2     : E'<'E
-         | E'>'E
-         | E LE E
-         | E GE E
-         | E EQ E
-         | E NE E
-         | E OR E
-         | E AND E
-         ;   
+ArithmeticExpression: E{
+
+         printf("\nResult=%d\n",$$);
+
+         return 0;
+
+        };
+
+E:E'+'E {$$=$1+$3;}
+
+ |E'-'E {$$=$1-$3;}
+
+ |E'*'E {$$=$1*$3;}
+
+ |E'/'E {$$=$1/$3;}
+
+ |E'%'E {$$=$1%$3;}
+
+ |'('E')' {$$=$2;}
+
+ | NUMBER {$$=$1;}
+
+;
+
 %%
 
-#include "lex.yy.c"
-main() {
-    printf("Enter the expression:\n");
-    yyparse();
-}      
+
+
+void main()
+
+{
+
+   printf("\nEnter Any Arithmetic Expression which can have operations Addition, Subtraction, Multiplication, Divison, Modulus and Round brackets:\n");
+
+   yyparse();
+
+  if(flag==0)
+
+   printf("\nEntered arithmetic expression is Valid\n\n");
+
+ 
+
+}
+
+void yyerror()
+
+{
+
+   printf("\nEntered arithmetic expression is Invalid\n\n");
+
+   flag=1;
+
+}  
