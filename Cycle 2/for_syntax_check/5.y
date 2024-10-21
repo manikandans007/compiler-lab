@@ -1,75 +1,28 @@
-   %{
-
-    #include<stdio.h>
-
-    int flag=0;
-
-   
-
+%{
+	#include <stdio.h>
+	int valid = 1;
 %}
 
-%token NUMBER
-
-
-
-%left '+' '-'
-
-%left '*' '/' '%'
-
-%left '(' ')'
+%token FOR PARANTHESIS OPERAND OPERATOR COMMA SEMICOLON NEWLINE
 
 %%
-
-ArithmeticExpression: E{
-
-         printf("\nResult=%d\n",$$);
-
-         return 0;
-
-        };
-
-E:E'+'E {$$=$1+$3;}
-
- |E'-'E {$$=$1-$3;}
-
- |E'*'E {$$=$1*$3;}
-
- |E'/'E {$$=$1/$3;}
-
- |E'%'E {$$=$1%$3;}
-
- |'('E')' {$$=$2;}
-
- | NUMBER {$$=$1;}
-
-;
-
+start: FOR PARANTHESIS A A B PARANTHESIS NEWLINE;
+A: OPERAND OPERATOR OPERAND SEMICOLON | OPERAND OPERATOR OPERAND COMMA A | SEMICOLON;
+B: OPERAND OPERATOR | OPERAND OPERATOR COMMA B |;
 %%
 
-
-
-void main()
-
+int yyerror()
 {
-
-   printf("\nEnter Any Arithmetic Expression which can have operations Addition, Subtraction, Multiplication, Divison, Modulus and Round brackets:\n");
-
-   yyparse();
-
-  if(flag==0)
-
-   printf("\nEntered arithmetic expression is Valid\n\n");
-
- 
-
+	valid = 0;
+	printf("Invalid.\n");
+	return 1;
 }
 
-void yyerror()
-
+void main()
 {
+	printf("Enter string:\n");
+	yyparse();
 
-   printf("\nEntered arithmetic expression is Invalid\n\n");
-
-   flag=1;
-
-}  
+	if (valid)
+		printf("Valid.\n");
+}
