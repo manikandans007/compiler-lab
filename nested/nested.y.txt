@@ -1,0 +1,51 @@
+%{
+#include <stdio.h>
+#include <stdlib.h>
+
+void yyerror(const char *s);
+int yylex();
+%}
+
+%token IF ELSE DO WHILE LP RP
+%token ID NUMBER
+
+%%
+program:
+    statements
+    ;
+
+statements:
+    statement statements
+    | /* empty */
+    ;
+
+statement:
+    if_statement
+    | do_while_statement
+    ;
+
+if_statement:
+    IF LP condition RP statement
+    | IF LP condition RP statement ELSE statement
+    ;
+
+do_while_statement:
+    DO statement WHILE LP condition RP
+    ;
+
+condition:
+    ID
+    | NUMBER
+    ;
+
+%% 
+
+int main() {
+    printf("Enter your code:\n");
+    yyparse();
+    return 0;
+}
+
+void yyerror(const char *s) {
+    fprintf(stderr, "Error: %s\n", s);
+}

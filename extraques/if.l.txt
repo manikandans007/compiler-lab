@@ -1,0 +1,20 @@
+%{
+#include "y.tab.h"
+%}
+
+%%
+
+"if"            { return IF; }
+"else"          { return ELSE; }
+"if"            { return IF; }
+"c"             { return CONDITION; }
+";"             { return SEMICOLON; }
+"stmt"          { return STATEMENT; }
+
+[ \t\n]+        ;  // Ignore whitespaces and newlines
+
+%%
+
+int yywrap() {
+    return 1;
+}

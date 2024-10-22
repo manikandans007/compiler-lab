@@ -1,0 +1,26 @@
+%{
+#include "y.tab.h"
+%}
+
+%%
+if             { return IF; }
+else           { return ELSE; }
+"("            { return LP; }
+")"            { return RP; }
+[0-9]+         { yylval = atoi(yytext); return NUMBER; }
+[a-zA-Z]+      { yylval = strdup(yytext); return ID; }
+[ \t\n]+       { /* Ignore whitespace */ }
+.              { /* Ignore other characters */ }
+%% 
+
+yacc -d nested_if_syntax.y  # Generates y.tab.c and y.tab.h
+flex lexer.l                 # Generates lex.yy.c
+gcc y.tab.c lex.yy.c -o nested_if_syntax -lfl
+
+./nested_if_syntax
+
+if (x) 
+    if (y) 
+        ; 
+    else 
+        ; 
