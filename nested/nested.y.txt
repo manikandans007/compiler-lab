@@ -6,8 +6,7 @@ void yyerror(const char *s);
 int yylex();
 %}
 
-%token IF ELSE DO WHILE LP RP
-%token ID NUMBER
+%token IF ELSE LP RP
 
 %%
 program:
@@ -21,16 +20,11 @@ statements:
 
 statement:
     if_statement
-    | do_while_statement
     ;
 
 if_statement:
     IF LP condition RP statement
     | IF LP condition RP statement ELSE statement
-    ;
-
-do_while_statement:
-    DO statement WHILE LP condition RP
     ;
 
 condition:
