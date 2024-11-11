@@ -144,3 +144,6 @@ if(strcmp(stack,"$E$")==0)
 else
     printf("\nNot Accepted;");
 }
+/* gcc operator_precedance.c
+	./a.out
+	enter the string : i*(i+i)*i */
