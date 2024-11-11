@@ -41,3 +41,11 @@ int main()
     printf("Op  \tDestn\tArg1\tArg2\n"); 
     gen_code(inp); 
 }
+
+
+/*
+gcc intermediate.c
+    ./a.out
+    Enter the expression :
+p=a*b+c/d=z
+    */
