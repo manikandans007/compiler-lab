@@ -73,3 +73,10 @@ void check()
             i = i - 2;
         }
 }
+
+
+/*
+"print the grammer"
+    enter the string :
+i+i*i
+    */
