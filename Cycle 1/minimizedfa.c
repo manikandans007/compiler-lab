@@ -205,3 +205,19 @@ int main(){
 	return 0;
 
 }
+/*
+start state :0
+	final state 2 5
+	transition 
+0 a 1
+1 b 2
+0 b 3
+3 a 4
+4 b 5
+final state :3
+
+final transition 
+1 b 0
+2 a 1
+3 a 1
+3 b 2
