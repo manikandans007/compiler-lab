@@ -54,3 +54,10 @@ void F() {
     else error = 1;
   } else error = 1;
 }
+/*
+enter an arithematic rxpression : a+*b
+  rejected
+enter an arithematic expression :
+(a+b)
+  accepted
+*/
