@@ -74,3 +74,15 @@ void follow(char c) {
     }
   }
 }
+
+/* enter the no of productions :4
+  ente the productions 
+E-TX
+  X-+TX
+  X-$
+  T-i
+  enter the variable whose first and folllow is to be found = E
+  first(E)={i}
+follow{E}=$
+want to continue or not (0/1)
+*/
