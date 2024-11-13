@@ -16,11 +16,7 @@ void recognize_string(const char *input_string) {
 }
 
 
-/*
-  lex pgm1.l
-gcc lex.yy.c 
-./a.out
-*/
+
 
 
 %}
@@ -54,4 +50,18 @@ int main() {
 int yywrap() {
     return 1;
 }
+
+/*
+  lex pgm1.l
+gcc lex.yy.c 
+./a.out
+enter the name alexa
+enter the input string : alex
+alex is not recognised
+enter the input string : alexandra
+alexandra is not recognised
+enter the input string : allen
+allen is  recognised
+*/
+
 
