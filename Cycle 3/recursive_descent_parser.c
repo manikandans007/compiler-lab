@@ -55,6 +55,14 @@ void F() {
   } else error = 1;
 }
 /*
+
+recursively using the expression 
+E  → T E'
+E' → + T E' | ε
+T  → F T'
+T' → * F T' | ε
+F  → (E) | identifier
+
 enter an arithematic rxpression : a+*b
   rejected
 enter an arithematic expression :
