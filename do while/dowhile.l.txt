@@ -15,3 +15,11 @@
 int yywrap(){
     return 1;
 }
+
+/*
+enter the do-while stmt to check for syntax validity:
+do{
+increment
+}
+while(i<);
+*/
