@@ -131,14 +131,9 @@ void printResults(int nextPartitionIndex) {
             break;
         }
     }
-    printf("Start Partition: %d\n", startPartition);
+    printf("Final state: %d\n", startPartition);
 
-    printf("Final Partitions: ");
-    for (int i = 0; i < nextPartitionIndex; i++) {
-        if ((P[i] & finalStates) != 0) {
-            printf("%d ", i);
-        }
-    }
+  
     printf("\nTransitions:\n");
     for (int i = 0; i < nextPartitionIndex; i++) {
         for (int j = 0; j < ALPHABET_SIZE; j++) {
