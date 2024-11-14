@@ -2,44 +2,30 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void yyerror(const char *s);
-int yylex();
+void yyerror(char *s);
+int yylex(void);
+
+
 %}
 
-%token DO WHILE LP RP
-%token ID NUMBER
+%token DO WHILE CONDITION STMT
 
 %%
-program:
-    statements
-    ;
+PROGRAM: START {printf("Valid Syntax of do while\n");}
+START: DO '{' STMT_LIST '}' WHILE CONDITION;
+STMT_LIST: | START STMT_LIST | STMT;
 
-statements:
-    statement statements
-    | /* empty */
-    ;
+%%
 
-statement:
-    do_while_statement
-    ;
-
-do_while_statement:
-    DO statement WHILE LP condition RP
-    ;
-
-condition:
-    ID
-    | NUMBER
-    ;
-
-%% 
 
 int main() {
-    printf("Enter your code:\n");
-    yyparse();
+    printf("Enter the do-while stmt to check for syntax validity: \n ");
+    yyparse();   // Parse the input
+    
     return 0;
 }
 
-void yyerror(const char *s) {
+
+void yyerror(char *s) {
     fprintf(stderr, "Error: %s\n", s);
 }
