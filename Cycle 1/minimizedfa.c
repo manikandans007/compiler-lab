@@ -48,9 +48,14 @@ void dfs(int v) {
 
 void readInput() {
     char buffer[125];
+    
+    // Prompt for start state
+    printf("Enter the start state: ");
     fgets(buffer, sizeof(buffer), stdin);
     startState = atoi(buffer);
 
+    // Prompt for final states
+    printf("Enter the final states (space-separated): ");
     fgets(buffer, sizeof(buffer), stdin);
     char *p = strtok(buffer, " ");
     while (p != NULL) {
@@ -58,6 +63,10 @@ void readInput() {
         finalStates |= 1 << state;
         p = strtok(NULL, " ");
     }
+
+    // Prompt for transitions
+    printf("Enter transitions in format 'from_state symbol to_state' (e.g., '0 a 1').\n");
+    printf("End input with EOF (Ctrl+D in Unix, Ctrl+Z in Windows):\n");
 
     int from, to;
     char symbol;
