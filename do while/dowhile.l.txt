@@ -17,3 +17,36 @@ int yywrap()
 {
     return 1;
 }
+/*
+lex dowhile.l
+yacc -d dowhile.y
+gcc lex.yy.c y.tab.c -ll
+./a.out
+do{increment}while(a<b);
+*/
+/* change in program reference
+%{
+#include "y.tab.h"
+%}
+
+%%
+"do"                    return DO;
+"while"                 return WHILE;
+"{"                     return LBRACE;
+"}"                     return RBRACE;
+"("                     return PARANTHESIS;
+")"                     return PARANTHESIS;
+[a-zA-Z][a-zA-Z0-9]*    return OPERAND;
+"="|"<"|">"|"<="|">="   return OPERATOR;
+";"                     return SEMICOLON;
+\n                      return NEWLINE;
+[ \t]                   ; // Ignore whitespace
+.                       { return yytext[0]; } // Catch-all for unexpected characters
+%%
+
+int yywrap()
+{
+    return 1;
+}
+*/
+
