@@ -1,31 +1,32 @@
 %{
-#include <stdio.h>
-#include <stdlib.h>
-
-void yyerror(char *s);
-int yylex(void);
-
-
+    #include <stdio.h>
+    int valid = 1;
 %}
 
-%token DO WHILE CONDITION STMT
+%token DO WHILE PARANTHESIS OPERAND OPERATOR SEMICOLON NEWLINE
 
 %%
-PROGRAM: START {printf("Valid Syntax of do while\n");}
-START: DO '{' STMT_LIST '}' WHILE CONDITION;
-STMT_LIST: | START STMT_LIST | STMT;
+start: DO body WHILE PARANTHESIS condition PARANTHESIS SEMICOLON NEWLINE;
+
+body: OPERAND OPERATOR OPERAND SEMICOLON 
+    | OPERAND OPERATOR OPERAND SEMICOLON body;
+
+condition: OPERAND OPERATOR OPERAND;
 
 %%
 
-
-int main() {
-    printf("Enter the do-while stmt to check for syntax validity: \n ");
-    yyparse();   // Parse the input
-    
-    return 0;
+int yyerror()
+{
+    valid = 0;
+    printf("Invalid.\n");
+    return 1;
 }
 
+void main()
+{
+    printf("Enter string:\n");
+    yyparse();
 
-void yyerror(char *s) {
-    fprintf(stderr, "Error: %s\n", s);
+    if (valid)
+        printf("Valid.\n");
 }
