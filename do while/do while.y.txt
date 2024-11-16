@@ -30,3 +30,49 @@ void main()
     if (valid)
         printf("Valid.\n");
 }
+/* change in program reference
+%{
+    #include <stdio.h>
+    #include <stdlib.h>
+    int valid = 1;
+%}
+
+%token DO WHILE LBRACE RBRACE PARANTHESIS OPERAND OPERATOR SEMICOLON NEWLINE
+
+%%
+start: DO LBRACE body RBRACE WHILE PARANTHESIS condition PARANTHESIS SEMICOLON NEWLINE
+    {
+        printf("Parsed do-while successfully.\n");
+    }
+    ;
+
+body: statement
+    | statement body
+    ;
+
+statement: OPERAND OPERATOR OPERAND SEMICOLON;
+
+condition: OPERAND OPERATOR OPERAND;
+
+%%
+
+int yyerror(const char *s)
+{
+    valid = 0;
+    fprintf(stderr, "Error: %s\n", s);
+    return 1;
+}
+
+int main()
+{
+    printf("Enter a do-while loop:\n");
+    yyparse();
+
+    if (valid)
+        printf("Valid syntax.\n");
+    else
+        printf("Invalid syntax.\n");
+
+    return 0;
+}
+*/
