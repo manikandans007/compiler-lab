@@ -1,25 +1,19 @@
 %{
-    #include "y.tab.h"
+#include "y.tab.h"
 %}
-%%
-"do" {return DO;}
-"while" {return WHILE;}
-[a-zA-Z0-9]* return STMT;
-"("[a-zA-Z0-9]+(">"|"<"|">="|"<="|"==")[a-zA-Z0-9]+")"  { return CONDITION; }
-"{" { return '{'; }
-"}" { return '}'; }
-\n         ;
-[ \t]      ;
 
 %%
-int yywrap(){
+"do"                    return DO;
+"while"                 return WHILE;
+[\(\)]                  return PARANTHESIS;
+[a-zA-Z0-9]+            return OPERAND;
+"="|"<"|">"|">="|"<="   return OPERATOR;
+";"                     return SEMICOLON;
+\n                      return NEWLINE;
+.                       ;
+%%
+
+int yywrap()
+{
     return 1;
 }
-
-/*
-enter the do-while stmt to check for syntax validity:
-do{
-increment
-}
-while(i<);
-*/
